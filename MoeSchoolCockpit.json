@@ -1,1 +1,658 @@
-{"openapi":"3.0.0","info":{"title":"MOE SchoolCockpit","version":"1.0.0"},"servers":[{"url":"http://localhost:7070/"}],"paths":{"/getStudents":{"get":{"description":"Get a list of students","responses":{"200":{"description":"email is form_teacher_three@school.gov.sg","content":{"application/json":{"example":{}}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}},"400":{"description":"Missing query param","content":{"application/json":{"example":"{}"}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}},"404":{"description":"When email provided but NOT FOUND","content":{"application/json":{"example":"{}"}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}}}}},"/getStudentDetails":{"get":{"description":"Get a list of student details","responses":{"200":{"description":"All Student Details","content":{"application/json":{"example":{}}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}},"400":{"description":"","content":{"application/json":{"example":{}}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}}}}},"/updateStudentHDP":{"post":{"description":"","responses":{"200":{"description":"","content":{"application/json":{"example":"{\n  \n}"}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}},"400":{"description":"Term or Semester not provided","content":{"application/json":{"example":"{\n  \"message\": \"Missing $.students.period in body\"\n}"}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}},"422":{"description":"NRIC does not exist","content":{"application/json":{"example":"{\n  \"message\": \"NRIC does not exist\"\n}"}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}}}}},"/updateStudentTestimonial":{"post":{"description":"","responses":{"200":{"description":"","content":{"application/json":{"example":"{}"}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}},"400":{"description":"Invalid input","content":{"application/json":{"example":"{}"}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}},"422":{"description":"NRIC does not exist","content":{"application/json":{"example":"{\n  \"message\": \"NRIC does not exist\"\n}"}},"headers":{"Access-Control-Allow-Origin":{"schema":{"type":"string"},"example":"*"},"Access-Control-Allow-Methods":{"schema":{"type":"string"},"example":"GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"},"Access-Control-Allow-Headers":{"schema":{"type":"string"},"example":"Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"}}}}}}}}
+{
+  "uuid": "dba43c61-ef33-4439-9621-3543da9060fc",
+  "lastMigration": 33,
+  "name": "MOE SchoolCockpit",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 7070,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "3ca7258b-884e-4307-9ae0-360354e8a688",
+      "type": "http",
+      "documentation": "Get a list of students",
+      "method": "get",
+      "endpoint": "getStudents",
+      "responses": [
+        {
+          "uuid": "daf28ef3-7e95-482a-be1c-bdb34f6f6cd5",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Missing query param",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "8f9957ed-318f-45b0-a683-58335a214e42",
+          "body": "{\n  \"text\": \"Response 1\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "email is form_teacher_one@school.gov.sg",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "ok01",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "form_teacher_one@school.gov.sg",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "3699ad5a-49a8-438f-8e1e-ab1f2fd39e07",
+          "body": "{\n  \"text\": \"Response 2\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "email is form_teacher_two@school.gov.sg",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "o5j4",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "form_teacher_two@school.gov.sg",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "9d121b64-1227-46e5-9332-6e6d94fb45c4",
+          "body": "{\n  \"text\": \"Response 3\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "email is form_teacher_three@school.gov.sg",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "6u3q",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "form_teacher_three@school.gov.sg",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "735f1e5e-1190-499f-b0a5-2cbce304ca6a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "When email provided but NOT FOUND",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "form_teacher_one@school.gov.sg",
+              "invert": true,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "form_teacher_two@school.gov.sg",
+              "invert": true,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "form_teacher_three@school.gov.sg",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "58dbaec4-5a24-4fe5-8e2d-9f8632a78911",
+      "type": "http",
+      "documentation": "Get a list of student details",
+      "method": "get",
+      "endpoint": "getStudentDetails",
+      "responses": [
+        {
+          "uuid": "07ce0d73-6c26-4547-8beb-197655633ca1",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "All Student Details",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "0i29",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            },
+            {
+              "target": "query",
+              "modifier": "school",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            },
+            {
+              "target": "query",
+              "modifier": "level",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            },
+            {
+              "target": "query",
+              "modifier": "class",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "2a858fc9-a5d8-4c0e-a6c3-fb205a2f3afa",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "query",
+              "modifier": "school",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "query",
+              "modifier": "level",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "query",
+              "modifier": "class",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "194cd9c8-958b-4e6d-b351-c3d8ae917f99",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "updateStudentHDP",
+      "responses": [
+        {
+          "uuid": "ea7cf135-25f6-4773-87fc-a482cbf96606",
+          "body": "{\n  \n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "9a24703b-29ec-4d43-9bc9-7a79859f5ca4",
+          "body": "{\n  \"message\": \"Missing email in query param\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Query Param - Email missing",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "cfbba31b-8870-45f9-b283-829a7bfba13f",
+          "body": "{\n  \"message\": \"Missing $.students.period in body\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Term or Semester not provided",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "$.students[*].period",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "bbbe8d55-bb38-4ef4-aa83-e8280e27c8b8",
+          "body": "{\n  \"message\": \"NRIC does not exist\"\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "NRIC does not exist",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "$.students[*].student_nric",
+              "value": "T7939778C",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "$.students[*].student_nric",
+              "value": "T4039053B",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "$.students[*].student_nric",
+              "value": "T8806088A",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "d2530977-6a17-4dc6-a698-1f79400a288e",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "updateStudentTestimonial",
+      "responses": [
+        {
+          "uuid": "0db22cd3-2b84-4502-99d2-105d89e600e1",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "b3326e7c-741e-4768-91dd-22db295893a7",
+          "body": "{\n  \"message\": \"NRIC does not exist\"\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "NRIC does not exist",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "$.students[*].student_nric",
+              "value": "T7939778C",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "$.students[*].student_nric",
+              "value": "T4039053B",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "$.students[*].student_nric",
+              "value": "T8806088A",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "dbf40c33-f195-46c8-9c8f-1d495a2f0f7d",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid input",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "3ca7258b-884e-4307-9ae0-360354e8a688"
+    },
+    {
+      "type": "route",
+      "uuid": "58dbaec4-5a24-4fe5-8e2d-9f8632a78911"
+    },
+    {
+      "type": "route",
+      "uuid": "194cd9c8-958b-4e6d-b351-c3d8ae917f99"
+    },
+    {
+      "type": "route",
+      "uuid": "d2530977-6a17-4dc6-a698-1f79400a288e"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "c9a5d913-106e-4872-af5c-10a136619055",
+      "id": "pzql",
+      "name": "student",
+      "documentation": "",
+      "value": "{\n    \"school_name\": \"{{faker 'company.name'}}\",\n    \"level_name\": \"{{faker 'number.int' min=1 max=7}}\",\n    \"class_name\": \"{{faker 'helpers.arrayElement' (array 'P1' 'P2' 'P3' 'P4' 'P5' 'P6')}}\",\n    \"student_nric\": \"T{{faker 'number.int' min=1111111 max=9999999}}{{faker 'helpers.arrayElement' (array 'A' 'B' 'C' 'D')}}\",\n    \"student_name\": \"{{faker 'person.firstName'}} {{faker 'person.lastName'}}\",\n    \"gender\": \"{{faker 'person.sex'}}\",\n    \"period\": \"{{faker 'helpers.arrayElement' (array 'term_1' 'term_2' 'term_3' 'term_4')}}\",\n    \"testimonial_flag\": \"{{faker 'datatype.boolean'}}\",\n    \"hdp_flag\": \"{{faker 'datatype.boolean'}}\"\n}"
+    },
+    {
+      "uuid": "4ac1ea57-1451-4416-bc4c-aa2b480316b0",
+      "id": "ok01",
+      "name": "class-p1",
+      "documentation": "",
+      "value": "[\n  {{#repeat 5}}\n    {{data 'student'}}\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "b64cd68f-a466-49c6-8972-7aef046d0077",
+      "id": "o5j4",
+      "name": "class-p2",
+      "documentation": "",
+      "value": "[\n  {{#repeat 25}}\n    {{data 'student'}}\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "62f845fa-137a-44b8-a611-b230116e396a",
+      "id": "6u3q",
+      "name": "class-p3",
+      "documentation": "",
+      "value": "[\n  {{#repeat 35}}\n    {{data 'student'}}\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "0be8184f-b9a9-4c29-887b-984c483bd908",
+      "id": "b3jo",
+      "name": "award",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n    {\n        \"year\": \"2025\",\n        \"award_name\": \"{{faker 'company.name'}} Award\"\n    }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "a58c9772-5a16-496e-b5f6-4a1ceb8184f6",
+      "id": "bugs",
+      "name": "via",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n    {\n        \"year\": \"2025\",\n        \"via_title\": \"Project {{faker 'company.name'}}\",\n        \"via_type\": \"ACTIVITY\",\n        \"partner_org\": \"{{faker 'company.name'}}\",\n        \"role\": \"Lead\",\n        \"impact\": \"Community Beyond School\",\n        \"sector\": \"ELDERLY\",\n        \"remarks\": \"Students supported the activity in the Chinese New Year.\"\n    }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "5ca8bbde-d689-4ba0-948d-1be121efc642",
+      "id": "fzuf",
+      "name": "cca",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n    {\n        \"event_name\": \"{{faker 'company.name'}}\",\n        \"cca_name\": \"{{faker 'company.name'}}\",\n        \"involvement_name\": \"Represented School at {{faker 'company.name'}}\",\n        \"academic_year\": \"2025\",\n        \"remarks_desc\": \"SYF 2025\"\n    }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "bbe836c9-3a7e-47f7-b000-dca125b16dfe",
+      "id": "4812",
+      "name": "ccal",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n    {\n        \"academic_year\": 2025,\n        \"module_name\": \"Sec 4 Mass Leadership Training\",\n        \"remarks_desc\": \"Training\"\n    }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "28625068-0ba8-4325-90f5-899770def791",
+      "id": "ee89",
+      "name": "enrichment",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n    {\n        \"academic_year\": 2025,\n        \"activity_name\": \"2025 Bicultural Studies Programme Symposium\",\n        \"remarks_desc\": \"Bicultural Studies\"\n    }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "7943c39b-9b66-44e4-8c83-c3ffe2c449a4",
+      "id": "mnn4",
+      "name": "ccaremarks",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n    {\n        \"academic_year\": \"2025\",\n        \"overall_remarks_desc\": \"He is a very dedicated and committed student.\"\n    }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "8ccfb6f5-fa32-4c0a-a0c2-2e37a172d798",
+      "id": "10uu",
+      "name": "attendance",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n    {\n        \"total_attendance\": \"200\",\n        \"total_possible_a\": \"260\",\n        \"late_coming\": \"4\"\n    }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "9b577c7c-5393-462b-8e5e-1d12c2aa812a",
+      "id": "fyxa",
+      "name": "personalq",
+      "documentation": "",
+      "value": "[\n  {{#repeat 3}}\n    {\n        \"discipline\": \"{{faker 'helpers.arrayElement' (array 'Developing' 'Exceeding' 'Not Observing' 'Not Demonstrated' 'Meet')}}\",\n        \"integrity\": \"{{faker 'helpers.arrayElement' (array 'Developing' 'Exceeding' 'Not Observing' 'Not Demonstrated' 'Meet')}}\",\n        \"knowledge\": \"{{faker 'helpers.arrayElement' (array 'Developing' 'Exceeding' 'Not Observing' 'Not Demonstrated' 'Meet')}}\",\n        \"Respect\": \"{{faker 'helpers.arrayElement' (array 'Developing' 'Exceeding' 'Not Observing' 'Not Demonstrated' 'Meet')}}\"\n    }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "a404efce-4ccb-4ac4-8633-8f6d998cf7ce",
+      "id": "0i29",
+      "name": "student-details-1",
+      "documentation": "",
+      "value": "[\n  {{#repeat 10}}\n    {\n        \"student_nric\": \"T{{faker 'number.int' min=1111111 max=9999999}}{{faker 'helpers.arrayElement' (array 'A' 'B' 'C' 'D')}}\",\n        \"student_name\": \"{{faker 'person.firstName'}} {{faker 'person.lastName'}}\",\n        \"gender\": \"{{faker 'person.sex'}}\",\n        \"awards\": [\n          {{#repeat 3}}\n            {{data 'award'}}\n          {{/repeat}}\n        ],\n        \"via\": [\n          {{#repeat 2}}\n            {{data 'via'}}\n          {{/repeat}}\n        ],\n        \"cca_achievement\": [\n          {{#repeat 3}}\n            {{data 'cca'}}\n          {{/repeat}}\n        ],\n        \"cca_leadership\": [\n          {{#repeat 3}}\n            {{data 'ccal'}}\n          {{/repeat}}\n        ],\n        \"enrichment\": [\n          {{#repeat 3}}\n            {{data 'enrichment'}}\n          {{/repeat}}\n        ],\n        \"cca_remarks\": [\n          {{#repeat 3}}\n            {{data 'ccaremarks'}}\n          {{/repeat}}\n        ],\n        \"attendance\": [\n          {{#repeat 3}}\n            {{data 'attendance'}}\n          {{/repeat}}\n        ],\n        \"conduct\": \"Excellent\",\n        \"personal_qualities\": [\n          {{#repeat 3}}\n            {{data 'personalq'}}\n          {{/repeat}}\n        ],\n        \"gep_programme\": \"Y\"\n    }\n  {{/repeat}}\n]"
+    }
+  ],
+  "callbacks": []
+}
